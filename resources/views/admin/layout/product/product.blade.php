@@ -162,7 +162,7 @@
                   <th>SubCat Name</th>
                   
                   <th>Img</th>
-                  <th>Title</th>
+                  <th>Product name</th>
                   <th>Price</th>
                   <th>Product name</th>
                   <th>Desc</th>
