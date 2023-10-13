@@ -3,7 +3,7 @@
 <nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
 
 	<div class="container">
-		<a class="navbar-brand" href="index.html">Furni<span>.</span></a>
+		<a class="navbar-brand" href="{{route('website.index')}}">Shop<span>Zee.</span></a>
 
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -58,3 +58,43 @@
 		
 </nav>
 <!-- End Header/Navigation -->
+
+<nav class="navbar navbar-expand-sm bg-light">
+
+	<div class="container-fluid">
+	  <!-- Links -->
+	  <ul class="navbar-nav">
+		<li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Dropdown</a>
+			<ul class="dropdown-menu">
+			  <li><a class="dropdown-item" href="#">Link</a></li>
+			  <li><a class="dropdown-item" href="#">Another link</a></li>
+			  <li><a class="dropdown-item" href="#">A third link</a></li>
+			</ul>
+		  </li>
+		  <li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Dropdown</a>
+			<ul class="dropdown-menu">
+			  <li><a class="dropdown-item" href="#">Link</a></li>
+			  <li><a class="dropdown-item" href="#">Another link</a></li>
+			  <li><a class="dropdown-item" href="#">A third link</a></li>
+			</ul>
+		  </li>
+		  <li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Dropdown</a>
+			<ul class="dropdown-menu">
+			  <li><a class="dropdown-item" href="#">Link</a></li>
+			  <li><a class="dropdown-item" href="#">Another link</a></li>
+			  <li><a class="dropdown-item" href="#">A third link</a></li>
+			</ul>
+		  </li>
+		  @foreach ($Data as $row)
+        
+		  <ul>
+			<li>{{$row->categoryname}}</li>		
+		  </ul>
+		  @endforeach
+	  </ul>
+	</div>
+  
+  </nav>

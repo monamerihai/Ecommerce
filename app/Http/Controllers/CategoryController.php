@@ -12,7 +12,7 @@ class CategoryController extends Controller
     {
         $Data = category1::all();
         // print_r($Data);exit;
-        return view('admin/layout/category/categoryform', ['Data' => $Data]);
+        return view('admin/layout/category/categoryform', ['Data' => $Data])->nest('website/layout/nav', ['Data' => $Data]);
     }
     public function store(Request $request)
     {
