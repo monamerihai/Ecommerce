@@ -13,6 +13,10 @@
               <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item active">General Form</li>
             </ol>
+
+
+
+            
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -70,8 +74,12 @@
                     <label for="Price">Price</label>
                     <input type="text" class="form-control" id="" placeholder="Price" name="price">
                   </div>
-                   
-                
+                  <div class="form-group">
+                    <label for="Price">Qty</label>
+                    <input type="number" class="form-control" id="" placeholder="Qty" name="qty">
+                  </div>
+                  Description -:
+                  <textarea type="text"  name="description"class="form-control"></textarea>
                      <div class="field_wrapper">
     <div>
     <input type="file"  id=""name="img[]">
@@ -156,6 +164,9 @@
                   <th>Img</th>
                   <th>Product name</th>
                   <th>Price</th>
+                  <th>Product name</th>
+                  <th>Desc</th>
+                  <th>Qty</th>
                  
                   <th>action</th>
                 </tr>
@@ -184,6 +195,9 @@ $res = explode(',',$row->img);
                  
                  
                   <td>{{$row->price}}</td>
+                  <td>{{$row->productname}}</td>
+                  <td>{{$row->description}}</td>
+                  <td>{{$row->qty}}</td>
              
                   <td>
                   <a href="{{route('productedit',$row->id)}} " id="createNewPost"class="btn btn-info" >Edit</a>

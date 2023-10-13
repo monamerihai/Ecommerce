@@ -63,18 +63,20 @@ Route::group(['middleware' => 'Adminauth'], function () {
   Route::post('/productstore', [ProductController::class, 'productstore'])->name('productstore');
   Route::get('/productdelete/{id}', [ProductController::class, 'productdelete'])->name('productdelete');
    Route::get('/productedit/{id}', [ProductController::class, 'productedit'])->name('productedit');
-  // Route::post('/subcatupdate', [ProductController::class, 'subcatupdate'])->name('subcatupdate');
+   Route::POST('/productupdate', [ProductController::class, 'productupdate'])->name('productupdate');
 
 
-  // Get 
+  // Get  category/subcategory in dropdown
 
   Route::post('/getcategory', [ProductController::class, 'getcategory'])->name('getcategory');
-  //Route::post('/updategetcategory', [Formlogin::class, 'updategetcategory'])->name('updategetcategory');
+  Route::post('/getsubcategory', [ProductController::class, 'getsubcategory'])->name('getsubcategory');
 
 
 
 });
 
+// Route::get('/shop', [WebsiteController::class, 'shop'])->name('website.shop');
+Route::get('/shop/{id}', [WebsiteController::class, 'shop'])->name('website.shop');
 
 
 Route::get('webs', function () {
@@ -82,7 +84,7 @@ Route::get('webs', function () {
 })->name('website.index');
 
 Route::get('website/shop', function () {
-  return view('website.shop');
+  return view('website.sshop');
 })->name('website.shop');
 Route::get('website/about', function () {
   return view('website.about');
@@ -145,3 +147,4 @@ Route::get('website/webs', function(){
 Route::get('website/edit', function(){
   return view ('website.edit');
 })->name('website.edit');
+

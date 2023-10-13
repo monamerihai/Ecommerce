@@ -271,6 +271,18 @@ $(document).ready(function(){
                   <p>Update Profile</p>     
                 </a>
               </li>
+              <li class="nav-item">
+                <a href=""class="btn btn-success btn-block">
+                 
+                  <p>Setting</p>     
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href=""class="btn btn-success btn-block">
+                 
+                  <p>Customer det</p>     
+                </a>
+              </li>
  
               <li class="nav-item">
                 <a href="{{ route('changepassword') }}"class="btn btn-success btn-block">
