@@ -20,6 +20,8 @@ return new class extends Migration {
             $table->string('img')->nullable();
             $table->string('price')->nullable();
             $table->string('tittle')->nullable();
+            $table->string('qty')->nullable();
+            $table->string('description')->nullable();
             $table->timestamps();
             // Define the foreign key constraint on subcategories table
           

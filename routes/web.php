@@ -59,13 +59,13 @@ Route::group(['middleware' => 'Adminauth'], function () {
   Route::post('/productstore', [ProductController::class, 'productstore'])->name('productstore');
   Route::get('/productdelete/{id}', [ProductController::class, 'productdelete'])->name('productdelete');
    Route::get('/productedit/{id}', [ProductController::class, 'productedit'])->name('productedit');
-  // Route::post('/subcatupdate', [ProductController::class, 'subcatupdate'])->name('subcatupdate');
+   Route::POST('/productupdate', [ProductController::class, 'productupdate'])->name('productupdate');
 
 
-  // Get 
+  // Get  category/subcategory in dropdown
 
   Route::post('/getcategory', [ProductController::class, 'getcategory'])->name('getcategory');
-  //Route::post('/updategetcategory', [Formlogin::class, 'updategetcategory'])->name('updategetcategory');
+  Route::post('/getsubcategory', [ProductController::class, 'getsubcategory'])->name('getsubcategory');
 
 
 

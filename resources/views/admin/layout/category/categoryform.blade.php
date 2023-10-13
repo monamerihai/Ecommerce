@@ -22,7 +22,7 @@
           <div class="col-sm-6">
             <h1>DataTables</h1>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Add new product
+  Add new category
 </button>
 
           </div>
@@ -126,7 +126,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add new product</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add new Category</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
