@@ -1,5 +1,46 @@
 @include('website.layout.css')
 @include('website.layout.nav')
+<div>
+
+<nav class="navbar navbar-expand-sm " style="
+color: #2f2f2f;
+background: #f9bf29;
+border-color: #f9bf29;">
+
+	<div class="container-fluid">
+	  <!-- Links -->
+	  <ul class="navbar-nav">
+		<li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Electronics</a>
+
+
+			<ul class="dropdown-menu">
+			  <li><a class="dropdown-item" href="#">Tv</a></li>
+			  <li><a class="dropdown-item" href="#">Laptop</a></li>
+			  <li><a class="dropdown-item" href="#">Computer</a></li>
+			</ul>
+		  </li>
+		  <li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Fashion</a>
+			<ul class="dropdown-menu">
+			  <li><a class="dropdown-item" href="#">Mens</a></li>
+			  <li><a class="dropdown-item" href="#">Womens</a></li>
+			  <li><a class="dropdown-item" href="#">Kids</a></li>
+			</ul>
+		  </li>
+		  <li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Furniture</a>
+			<ul class="dropdown-menu">
+			  <li><a class="dropdown-item" href="#">Bed</a></li>
+			  <li><a class="dropdown-item" href="#">Chair</a></li>
+			  <li><a class="dropdown-item" href="#">Table</a></li>
+			</ul>
+			
+	</div>
+  
+  </nav>
+</div>
+
 <!-- Start Hero Section -->
 <div class="hero">
     <div class="container">

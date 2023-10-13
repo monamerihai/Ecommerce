@@ -75,6 +75,8 @@ Route::group(['middleware' => 'Adminauth'], function () {
 
 });
 
+// Route::get('/shop', [WebsiteController::class, 'shop'])->name('website.shop');
+Route::get('/shop/{id}', [WebsiteController::class, 'shop'])->name('website.shop');
 
 
 Route::get('webs', function () {
@@ -82,7 +84,7 @@ Route::get('webs', function () {
 })->name('website.index');
 
 Route::get('website/shop', function () {
-  return view('website.shop');
+  return view('website.sshop');
 })->name('website.shop');
 Route::get('website/about', function () {
   return view('website.about');
@@ -145,3 +147,4 @@ Route::get('website/webs', function(){
 Route::get('website/edit', function(){
   return view ('website.edit');
 })->name('website.edit');
+
