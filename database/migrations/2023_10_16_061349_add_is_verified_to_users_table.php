@@ -13,16 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('multipalimgs', function (Blueprint $table) {
-            $table->id();
-           
-            $table->unsignedBigInteger('productid');
-            
-            $table->string('img');
-            
-            $table->foreign('productid')->references('id')->on('products'); 
-            
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('is_verified')->after('email');
         });
     }
 
@@ -33,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('multipalimgs');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 };

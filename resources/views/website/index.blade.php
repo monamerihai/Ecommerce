@@ -10,33 +10,30 @@ border-color: #f9bf29;">
 	<div class="container-fluid">
 	  <!-- Links -->
 	  <ul class="navbar-nav">
-		<li class="nav-item dropdown">
-			<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Electronics</a>
+	        @foreach ($categorys as $category)
 
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">{{ $category->categoryname }}</a>
+					
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+					@if(isset($subcategory[$category->id]))
+						<li>
+						@foreach ($subcategory[$category->id] as $sub)
+											<a class="nav-link " href="#" role="button" data-bs-toggle="dropdown">{{ $sub->subcatname }}</a>
 
-			<ul class="dropdown-menu">
-			  <li><a class="dropdown-item" href="#">Tv</a></li>
-			  <li><a class="dropdown-item" href="#">Laptop</a></li>
-			  <li><a class="dropdown-item" href="#">Computer</a></li>
-			</ul>
-		  </li>
-		  <li class="nav-item dropdown">
-			<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Fashion</a>
-			<ul class="dropdown-menu">
-			  <li><a class="dropdown-item" href="#">Mens</a></li>
-			  <li><a class="dropdown-item" href="#">Womens</a></li>
-			  <li><a class="dropdown-item" href="#">Kids</a></li>
-			</ul>
-		  </li>
-		  <li class="nav-item dropdown">
-			<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Furniture</a>
-			<ul class="dropdown-menu">
-			  <li><a class="dropdown-item" href="#">Bed</a></li>
-			  <li><a class="dropdown-item" href="#">Chair</a></li>
-			  <li><a class="dropdown-item" href="#">Table</a></li>
-			</ul>
-			
-	</div>
+							
+						@endforeach
+						</li>
+					@endif
+					</ul>
+				</li>
+
+            @endforeach
+		</ul>
+    </div>
+ 
+	  
+
   
   </nav>
 </div>
@@ -195,7 +192,7 @@ border-color: #f9bf29;">
 						<ul class="list-unstyled custom-list my-4">
 							<li>Donec vitae odio quis nisl dapibus malesuada</li>
 							<li>Donec vitae odio quis nisl dapibus malesuada</li>
-							<li>Donec vitae odio quis nisl dapibus malesuada</li>
+				 			<li>Donec vitae odio quis nisl dapibus malesuada</li>
 							<li>Donec vitae odio quis nisl dapibus malesuada</li>
 						</ul>
 						<p><a herf="#" class="btn">Explore</a></p>
