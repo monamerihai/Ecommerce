@@ -76,16 +76,15 @@ Route::group(['middleware' => 'Adminauth'], function () {
 });
 
 // Route::get('/shop', [WebsiteController::class, 'shop'])->name('website.shop');
-Route::get('/shop/{id}', [WebsiteController::class, 'shop'])->name('website.shop');
 
 
-Route::get('webs', function () {
-  return view('website.index');
-})->name('website.index');
-
-Route::get('website/shop', function () {
-  return view('website.sshop');
-})->name('website.shop');
+Route::get('webs', [WebsiteController::class, 'index'])->name('web.index');
+// Route::get('website/shop', function () {
+//   return view('website.shop');
+// })->name('website.shop');
+Route::get('website/shop', [WebsiteController::class, 'shop'])->name('web.shop');
+Route::get('website/index', [WebsiteController::class, 'index'])->name('website.index');
+Route::get('website/services', [WebsiteController::class, 'index'])->name('website.index');
 Route::get('website/about', function () {
   return view('website.about');
 })->name('website.about');
@@ -148,3 +147,8 @@ Route::get('website/edit', function(){
   return view ('website.edit');
 })->name('website.edit');
 
+Route::get('website/product', [WebsiteController::class, 'product'])->name('web.product');
+Route::get('website/category', [WebsiteController::class, 'category'])->name('web.category');
+Route::get('website/subcategory', [WebsiteController::class, 'subcategory'])->name('subcategory');
+Route::get('/getSubcategories/{categoryId}', 'WebsiteController@getSubcategories');
+Route::get('/product/{productId}', [WebsiteController::class, 'subcategory'])->name('productDetail');
