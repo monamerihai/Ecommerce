@@ -80,7 +80,7 @@ class ProductController extends Controller
     }
     public function productdelete($id)
     {
-        $deleted = DB::table('products')->where('id', $id)->delete();
+        $deleted = DB::table('products',)->where('id', $id)->delete();
 
         if ($deleted) {
             return redirect()->route('product')->with('success', 'Record has been deleted successfully');

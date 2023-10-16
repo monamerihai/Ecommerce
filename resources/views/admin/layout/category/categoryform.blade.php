@@ -117,6 +117,7 @@
 
 <!-- page script -->
 
+
 </body>
 </html>
 <!-- Button trigger modal -->
@@ -132,23 +133,56 @@
         </button>
       </div>
       <div class="modal-body">
-      <form action="{{route('store')}}" method="post" enctype="multipart/form-data">
+      <form action="{{route('store')}}" method="post" enctype="multipart/form-data"onsubmit="return validate();">
             @csrf
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Name:</label>
-            <input type="text" class="form-control" id=""name="categoryname">
+            <input type="text" class="form-control" id="categoryname"name="categoryname"required>
+            <span id="categorynameError" class="text-danger"></span>
           </div>
         
           <div class="form-group">
             <label for="Img" class="col-form-label">Img:</label>
-            <input type="file" class="form-control" id=""name="img"></textarea>
+            <input type="file" class="form-control" id=""name="img"required></textarea>
           </div>
           <div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
 </div>
 <br>
 <div><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
         </form>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+  function validate(){
+   
+    var categoryname = $('#categoryname').val();
+    var error= '0';
+   
+//alert(categoryname)
+
+
+
+//alert(error)
+if (!/^[a-zA-Z]+$/.test(categoryname)) {
+    $('#categorynameError').text('categoryname  must contain only letters (characters).');
+    var error = 1;
+}
+
+
+
+if(error === '0'){
+//alert('a')
+return true;
+
+}else{
+ // alert('aa')
+return false;
+}
+
+  }
+</script>
+
       
       </div>
       <div class="modal-footer">
