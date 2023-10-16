@@ -33,7 +33,7 @@
 
         <div class="row g-5 mb-5">
             <div class="col-lg-4">
-                <div class="mb-4 footer-logo-wrap">		<a class="navbar-brand" href="{{route('website.index')}}">Shop<span>Zee.</span></a>
+                <div class="mb-4 footer-logo-wrap">		<a class="navbar-brand" href="{{url('website.index')}}">Shop<span>Zee.</span></a>
                 </div>
                 <p class="mb-4">Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant</p>
 
@@ -50,19 +50,19 @@
                     <div class="col-6 col-sm-6 col-md-3">
                         <ul class="list-unstyled">
                            	<li>
-					<a href="{{route('website.index')}}">Home</a>
+					<a href="{{url('website/index')}}">Home</a>
 				</li>
-				<li><a href="{{route('website.shop')}}">Shop</a></li>
-				<li><a href="{{route('website.about')}}">About us</a></li>
+				<li><a href="{{url('website/shop')}}">Shop</a></li>
+				<li><a href="{{url('website/about')}}">About us</a></li>
 
 				@auth
-				<li><a href="{{route('website.services')}}">Services</a></li>
+				<li><a href="{{url('website/services')}}">Services</a></li>
 				@endauth
-				<li><a href="{{route('website.blog')}}">Blog</a></li>
+				<li><a href="{{url('website/blog')}}">Blog</a></li>
 			    @auth
 				<li>
 					
-					<a href="{{route('website.contact')}}">Contact us</a></li>
+					<a href="{{url('website/contact')}}">Contact us</a></li>
 			</ul>
 			@endauth
                         </ul>
