@@ -37,7 +37,7 @@
         </div>
     @endif
     
-              <form action="{{route('subcatstore')}}" method="post" enctype="multipart/form-data">
+              <form action="{{route('subcatstore')}}" method="post" enctype="multipart/form-data"onsubmit="return validate();">
             @csrf
                 <div class="card-body">
                   <div class="form-group">
@@ -53,7 +53,8 @@
 </div>
                   <div class="form-group">
                     <label for="">Sub category name</label>
-                    <input type="text" class="form-control" id="" placeholder="Sub category" name="subcatname">
+                    <input type="text" class="form-control" id="subcatname" placeholder="Sub category" name="subcatname"required>
+                    <span id="subcatnameError" class="text-danger"></span>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputFile">Img</label>
@@ -71,9 +72,40 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
                 </div>
               </form>
+              <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+  function validate(){
+   
+    var subcatname = $('#subcatname').val();
+    var error= '0';
+   
+//alert(subcatname)
+
+
+
+//alert(error)
+if (!/^[a-zA-Z]+$/.test(subcatname)) {
+    $('#subcatnameError').text('subcatname  must contain only letters (characters).');
+    var error = 1;
+}
+
+
+
+if(error === '0'){
+//alert('a')
+return true;
+
+}else{
+ // alert('aa')
+return false;
+}
+
+  }
+</script>
             </div>
             <!-- /.card -->
 

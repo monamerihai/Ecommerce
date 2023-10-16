@@ -14,18 +14,21 @@ public function index(){
     
 }
 public function login_acn(Request $request)
-    {
-        
-        $credentials = $request->only('email', 'password');
-           // print_r(Auth::attempt($credentials));die();
-        if (Auth::attempt($credentials)) {
-          //  print_r($credentials);die();
-            return redirect()->intended('/dashboard');
-        }else{
-            return redirect()->back()->withErrors(['error' => 'Invalid credentials']);
+{
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required',
+    ]);
 
-        }
+    $credentials = $request->only('email', 'password');
+
+    if (Auth::attempt($credentials)) {
+        return redirect()->intended('/dashboard');
+    } else {
+        return redirect()->back()->withErrors(['error' => 'Invalid credentials']);
     }
+}
+
     public function dashboard()
 
     {

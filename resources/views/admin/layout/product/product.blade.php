@@ -40,7 +40,7 @@
             <p>{{ $message }}</p>
         </div>
     @endif
-    <form action="{{route('productstore')}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('productstore')}}" method="post" enctype="multipart/form-data" onsubmit="return validate();">
             @csrf
             <div class="card-body">
                   <div class="form-group">
@@ -64,22 +64,27 @@
                   </div>
                   <div class="form-group">
                     <label for="Product Name">Product Name</label>
-                    <input type="text" class="form-control" id="" placeholder="Product Name" name="productname">
+                    <input type="text" class="form-control" id="productname" placeholder="Product Name" name="productname"requred>
+                    <span id="productnameError" class="text-danger"></span>
 </div>
                  <div class="form-group">
                     <label for="Tittle">Tittle</label>
-                    <input type="text" class="form-control" id="" placeholder="Tittle" name="tittle">
+                    <input type="text" class="form-control" id="tittle" placeholder="Tittle" name="tittle">
+                    <span id="tittleError" class="text-danger"></span>
                   </div>
                   <div class="form-group">
                     <label for="Price">Price</label>
-                    <input type="text" class="form-control" id="" placeholder="Price" name="price">
+                    <input type="number" class="form-control" id="Price" placeholder="Price" name="price">
+                    <span id="priceError" class="text-danger"></span>
                   </div>
                   <div class="form-group">
-                    <label for="Price">Qty</label>
-                    <input type="number" class="form-control" id="" placeholder="Qty" name="qty">
+                    <label for="Price1">Qty</label>
+                    <input type="number" class="form-control" id="qty" placeholder="Qty" name="qty">
+                    <span id="qtyError" class="text-danger"></span>
                   </div>
                   Description -:
-                  <textarea type="text"  name="description"class="form-control"></textarea>
+                  <textarea type="text" id="description" name="description"class="form-control"></textarea>
+                  <span id="descriptionError" class="text-danger"></span>
                      <div class="field_wrapper">
     <div>
     <input type="file"  id=""name="img[]">
@@ -91,9 +96,67 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" id="submitBtn" class="btn btn-primary">Submit</button>
                 </div>
               </form>
+              <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+  function validate(){
+    $('#priceError').val('');
+    var price = $('#Price').val();
+    var qty = $('#qty').val();
+    var productname = $('#productname').val();
+    var description = $('#description').val();
+    var tittle = $('#tittle').val();
+    var error= '0';
+   
+//alert(price)
+//alert(price)
+// Client-side validation
+if ( price <= 0) {
+  //alert('hu');
+    $('#priceError').text('Price must be a positive number.');
+   var  error=1;
+    
+}  
+if ( qty <= 0) {
+  //alert('hu');
+    $('#qtyError').text('qty must be a positive number.');
+   var  error=1;
+}  
+alert(error)
+if (!/^[a-zA-Z]+$/.test(productname)) {
+    $('#productnameError').text('Product name must contain only letters (characters).');
+    var error = 1;
+}
+if (!/^[a-zA-Z]+$/.test(description)) {
+    $('#descriptionError').text('description name must contain only letters (characters).');
+    var error = 1;
+}
+if (!/^[a-zA-Z]+$/.test(tittle)) {
+    $('#tittleError').text('tittle  must contain only letters (characters).');
+    var error = 1;
+}
+
+
+
+if(error === '0'){
+//alert('a')
+return true;
+
+}else{
+ // alert('aa')
+return false;
+}
+
+  }
+</script>
+
+
+ 
+
+
             </div>
            
             </div>
@@ -162,7 +225,7 @@
                   <th>SubCat Name</th>
                   
                   <th>Img</th>
-                  <th>Product name</th>
+                  <th>Tittle</th>
                   <th>Price</th>
                   <th>Product name</th>
                   <th>Desc</th>
