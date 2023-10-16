@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Customer;
 use App\Http\Controllers\WebsiteController;
+use App\Http\Controllers\SiteController;
 
 
 
@@ -74,17 +75,24 @@ Route::group(['middleware' => 'Adminauth'], function () {
 
 
 });
+//Site Controller
+Route::get('/website.index', [SiteController::class, 'cat'])->name('website.index');
+Route::post('/getcat', [SiteController::class, 'getcat'])->name('getcat');
+//Route::get('/website.index', [SiteController::class, 'sub'])->name('website.index');
+
+
+
 
 // Route::get('/shop', [WebsiteController::class, 'shop'])->name('website.shop');
 Route::get('/shop/{id}', [WebsiteController::class, 'shop'])->name('website.shop');
 
 
-Route::get('webs', function () {
-  return view('website.index');
-})->name('website.index');
+// Route::get('webs', function () {
+//   return view('website.index');
+// })->name('website.index');
 
 Route::get('website/shop', function () {
-  return view('website.sshop');
+  return view('website.shop');
 })->name('website.shop');
 Route::get('website/about', function () {
   return view('website.about');
@@ -116,6 +124,8 @@ Route::get('website/password', function () {
 })->name('website.password');
 
 
+
+// Customer Controller
 
 
 Route::get('website/login',[Customer::class, 'login'])->name('website.login');
