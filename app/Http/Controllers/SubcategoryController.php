@@ -12,13 +12,10 @@ class SubcategoryController extends Controller
 {
     public function index()
     {
-        $data['categorys'] = category1::get();
 
-        $data['subcategory'] = DB::table('subcategories')
-            ->join('category1s', 'subcategories.catid', '=', 'category1s.id')
-            ->select('subcategories.*', 'category1s.categoryname')
-            ->get();
-        // print_r($data);exit;
+        $categories = category1::with('subcategories')->get();
+        $subcategories = subcategory::all();
+        $data = compact('categories','subcategories');
 
         return view('admin.layout.subcategory.subcategory', $data);
     }

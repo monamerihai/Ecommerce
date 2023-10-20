@@ -71,7 +71,6 @@ $(document).ready(function(){
 
     
 
-</script>
 
 
   <!-- Font Awesome -->
