@@ -86,7 +86,7 @@ class Customer extends Controller
 
         $data['body'] = 'Your OTP is:- '.$otp;
 
-        Mail::send('mailVerification',['data'=>$data],function($message) use ($data){
+        Mail::send('website.mailVerification',['data'=>$data],function($message) use ($data){
             $message->to($data['email'])->subject($data['title']);
         });
     }

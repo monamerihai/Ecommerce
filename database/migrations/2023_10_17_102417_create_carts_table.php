@@ -13,8 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('is_verified')->after('email');
+        Schema::create('carts', function (Blueprint $table) {
+            $table->id();
+            $table->string('cat_id');
+            $table->string('sub_id');
+            $table->string('prod_id');
+            $table->string('qty');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('carts');
     }
 };

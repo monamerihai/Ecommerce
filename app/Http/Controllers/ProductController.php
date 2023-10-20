@@ -6,7 +6,6 @@ use App\Models\category1;
 use App\Models\subcategory;
 use App\Models\product;
 use App\Models\Multipalimg;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,21 +13,14 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $data['categorys'] = category1::get();
-
-
-        $data['products'] = DB::table('products')
-            ->join('category1s', 'products.categoryid', '=', 'category1s.id')
-            ->join('subcategories', 'products.subcategoryid', '=', 'subcategories.id')
-            ->select('products.*', 'category1s.categoryname', 'subcategories.subcatname')
-            ->get();
-
+        $categories = category1::with('products.subcategory')->get();
+        $products = product::all();
+        $data = compact('categories','products');
         return view('admin/layout/product/product', $data);
 
     }
     public function productstore(Request $request)
     {
-        //dd($request->all());die;
         if ($request->file('img')) {
             $images = $request->file('img');
             $StorageFileName = [];
@@ -37,7 +29,6 @@ class ProductController extends Controller
 
                 $imageName = time() . "_" . uniqid() . '.' . $extention;
                 $image->move(base_path('public/image'), $imageName);
-                // $content->image = $filename;
                 array_push($StorageFileName, $imageName);
             }
         }
@@ -54,24 +45,18 @@ class ProductController extends Controller
 
             'img' => $imageName ?? ""
         ];
-        // print_r($Data);die;
 
 
         $post = product::create($Data);
-        //  dd($post->id);
         if ($post) {
 
             $companyData = [
                 'productid' => $post->id,
                 'img' => implode(',', $StorageFileName) ?? ""
-                // 'img' => implode(',', $imageName) ?: ""
-
-                // 'productimg' => implode(',',$imageName) ?? ""
+               
             ];
-            // print_r($companyData);exit;
 
             $post = Multipalimg::create($companyData);
-            // print_r($post);exit;
         }
 
 
@@ -144,13 +129,11 @@ class ProductController extends Controller
             $imageName = $request->oldimg;
         }
 
-        //dd($request);die;  
 
 
 
         $id = $request->id;
         $categoryid = $request->categoryid;
-        //dd($categoryid);
         $subcategoryid = $request->subcategoryid;
         $productname = $request->productname;
         $price = $request->price;
@@ -162,7 +145,6 @@ class ProductController extends Controller
         $affected = DB::table('products')
             ->where('id', $id)
             ->update([
-                //  'catid' => $catid,
                 'categoryid' => $categoryid,
                 'subcategoryid' => $subcategoryid,
                 'productname' => $productname,
@@ -179,5 +161,5 @@ class ProductController extends Controller
         }
 
     }
-
+   
 }

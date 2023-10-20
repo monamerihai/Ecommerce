@@ -44,7 +44,7 @@
                   <label for="lang">Select category</label>
              <select name="Catid" id="lang" class="form-control">
              <option value="select">Select category</option>
-             @foreach($categorys as $row )
+             @foreach($categories as $row )
              <option value="{{$row->id}}">{{$row->categoryname}}</option>
              @endforeach
              
@@ -195,12 +195,12 @@ return false;
                 </thead>
             
                 <tbody>
-                @foreach ($subcategory as $row)
+                @foreach ($subcategories as $row)
             
            
                 <tr>
                   <td>{{$row->id}}</td>
-                  <td>{{$row->categoryname}}</td> 
+                  <td> {{optional($row->category1)->categoryname}}</td>
                   <td>{{$row->subcatname}}</td>
                   <td> <img src="{{('image/' . $row->img) }}"class="css-class" alt="alt text"  width="100px"> </td>
                  
