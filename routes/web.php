@@ -77,8 +77,11 @@ Route::group(['middleware' => 'Adminauth'], function () {
 });
 //Site Controller
 Route::get('/website.index', [SiteController::class, 'cat'])->name('website.index');
-Route::post('/getcat', [SiteController::class, 'getcat'])->name('getcat');
-//Route::get('/website.index', [SiteController::class, 'sub'])->name('website.index');
+
+Route::get('category/{category:slug}/{product:slug}', [SiteController::class, 'productView'])->name('category.product.view');
+Route::get('/collections/{category_slug}/{product_slug}', [SiteController::class, 'productViews']);
+
+
 
 
 

@@ -34,9 +34,18 @@ public function shop()
 }
 public function show($id)
 {
-    $product = product::find($id);
-    
-    return view('website.product_detail', ['product' => $product]);
+
+    $data['categorys'] = category1::get();
+
+    $data['products'] = DB::table('products')
+    ->join('category1s', 'products.categoryid', '=', 'category1s.id')
+    ->join('subcategories', 'products.subcategoryid', '=', 'subcategories.id')
+    ->select('products.*','category1s.slug as catslug', 'category1s.categoryname', 'subcategories.subcatname')
+    ->get();
+
+    return view('website.shop', $data);
+
+
 }
 }
     

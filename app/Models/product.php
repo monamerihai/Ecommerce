@@ -19,4 +19,8 @@ class product extends Model
     public function subcategory(){
         return $this->belongsTo(subcategory::class,'subcategoryid','id');
     }
+
+    public function multipalimgj(){
+        return $this->hasMany(Multipalimg::class,'productid','id');
+    }
 }

@@ -13,8 +13,10 @@ class ProductController extends Controller
 {
     public function index()
     {
+        $products=product::with('multipalimgj')->get();
+       
         $categories = category1::with('products.subcategory')->get();
-        $products = product::all();
+        //$products = product::all();
         $data = compact('categories','products');
         return view('admin/layout/product/product', $data);
 

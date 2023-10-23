@@ -221,6 +221,7 @@ return false;
                
                 <tbody>
                 @foreach ($products as $row)
+               
                 <td>{{$row->id}}</td>
                 <td> {{$row->category1->categoryname}}</td>
                
@@ -230,10 +231,18 @@ return false;
                 <?php 
 $res = explode(',',$row->img);
 
-?>
-@foreach($res as $value)
+?>@foreach($res as $value)
   <img src="{{asset('image/' . $value) }}" class="css-class" alt="multiple image"  style="width:100px; height:100px; object-fit:cover;"> 
 @endforeach
+
+@forelse($row->multipalimgj as $value)
+    <img src="{{ asset('image/' . $value->img) }}" class="image-thumb" alt="Multiple Image"style="width:100px; height:100px; object-fit:cover;">
+@empty
+    <p>No images available.</p>
+@endforelse
+
+{{-- <img src="{{asset('image/' . $row->multipalimgj->img) }}" class="css-class" alt="multiple image"  style="width:100px; height:100px; object-fit:cover;">  --}}
+
 </td>
                   <td>{{$row->tittle}}</td>                 
                   <td>{{$row->price}}</td>

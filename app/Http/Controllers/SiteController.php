@@ -11,11 +11,7 @@ class SiteController extends Controller
 {
 public function cat(){ 
     $data['categorys'] = category1::get();
-    $data['products'] = DB::table('products')
-    ->join('category1s', 'products.categoryid', '=', 'category1s.id')
-    ->join('subcategories', 'products.subcategoryid', '=', 'subcategories.id')
-    ->select('products.*', 'category1s.categoryname', 'subcategories.subcatname')
-    ->get();    
+
 
     // $data['subcategory'] = DB::table('subcategories')
     // ->join('category1s', 'subcategories.catid', '=', 'category1s.id')
@@ -31,6 +27,21 @@ public function cat(){
    //print_r($data['subcategory']);die();
 
             return view('website.index', $data);
+}
+public function getcat(Request $request)
+{
+    $cid = $request->cid;
+    $catdata = Db::table('subcategories')->where('catid', $cid)->get();
+    $htmi = '<option value="">Select subcategory</option>';
+
+
+    foreach ($catdata as $row) {
+
+        $htmi .= "<option value={$row->id}>{$row->subcatname}</option>";
+    }
+    echo $htmi;
+
+
 }
 
 }

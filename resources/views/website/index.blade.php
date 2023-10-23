@@ -78,12 +78,9 @@ border-color: #f9bf29;">
 					<!-- Start Column 3 -->
 					@php $count = 0 @endphp
           @foreach ($products as $row)
-          @if ($count >= 3)
-          @break
-      @endif
-
+         
         <div class="col-12 col-md-4 col-lg-3 mb-5">
-			<a class="product-item" href="#">
+			{{-- <a class="product-item" href="{{route('website.cart')}}"> --}}
                 <img src="{{ asset('image/' . explode(',', $row->img)[0]) }}" class="card-img-top" alt="Card Image" style="height: 170; width:150">
                 <h5 class="card-title">{{ $row->productname }}</h5>
                 <p class="card-text">Price: ₹{{ $row->price }}/-</p>
