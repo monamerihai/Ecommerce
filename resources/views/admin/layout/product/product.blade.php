@@ -47,7 +47,7 @@
                   <label for="lang">Selecct Category  </label>
              <select name="categoryid" id="category" class="form-control">
              <option value="select">Select Category </option>
-             @foreach($categorys as $row )
+             @foreach($categories as $row )
              <option value="{{$row->id}}">{{$row->categoryname}}</option>
              @endforeach  
 </select>
@@ -106,9 +106,7 @@
     $('#priceError').val('');
     var price = $('#Price').val();
     var qty = $('#qty').val();
-    var productname = $('#productname').val();
-    var description = $('#description').val();
-    var tittle = $('#tittle').val();
+   
     var error= '0';
    
 //alert(price)
@@ -125,19 +123,6 @@ if ( qty <= 0) {
     $('#qtyError').text('qty must be a positive number.');
    var  error=1;
 }  
-alert(error)
-if (!/^[a-zA-Z]+$/.test(productname)) {
-    $('#productnameError').text('Product name must contain only letters (characters).');
-    var error = 1;
-}
-if (!/^[a-zA-Z]+$/.test(description)) {
-    $('#descriptionError').text('description name must contain only letters (characters).');
-    var error = 1;
-}
-if (!/^[a-zA-Z]+$/.test(tittle)) {
-    $('#tittleError').text('tittle  must contain only letters (characters).');
-    var error = 1;
-}
 
 
 
@@ -227,7 +212,6 @@ return false;
                   <th>Img</th>
                   <th>Tittle</th>
                   <th>Price</th>
-                  <th>Product name</th>
                   <th>Desc</th>
                   <th>Qty</th>
                  
@@ -237,28 +221,31 @@ return false;
                
                 <tbody>
                 @foreach ($products as $row)
+               
                 <td>{{$row->id}}</td>
-                <td> {{$row->categoryname}}</td>
+                <td> {{$row->category1->categoryname}}</td>
                
                
-                <td>{{$row->subcatname}}</td>
+                <td>{{$row->subcategory->subcatname}}</td>
                 <td> 
                 <?php 
 $res = explode(',',$row->img);
 
-?>
-@foreach($res as $value)
+?>@foreach($res as $value)
   <img src="{{asset('image/' . $value) }}" class="css-class" alt="multiple image"  style="width:100px; height:100px; object-fit:cover;"> 
 @endforeach
+
+@forelse($row->multipalimgj as $value)
+    <img src="{{ asset('image/' . $value->img) }}" class="image-thumb" alt="Multiple Image"style="width:100px; height:100px; object-fit:cover;">
+@empty
+    <p>No images available.</p>
+@endforelse
+
+{{-- <img src="{{asset('image/' . $row->multipalimgj->img) }}" class="css-class" alt="multiple image"  style="width:100px; height:100px; object-fit:cover;">  --}}
+
 </td>
-                <td>{{$row->tittle}}</td>
-                
-
-
-                 
-                 
+                  <td>{{$row->tittle}}</td>                 
                   <td>{{$row->price}}</td>
-                  <td>{{$row->productname}}</td>
                   <td>{{$row->description}}</td>
                   <td>{{$row->qty}}</td>
              

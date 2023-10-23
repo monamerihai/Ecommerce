@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Customer;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\CartController;
 
 
 
@@ -70,8 +71,7 @@ Route::group(['middleware' => 'Adminauth'], function () {
   // Get  category/subcategory in dropdown
 
   Route::post('/getcategory', [ProductController::class, 'getcategory'])->name('getcategory');
-  Route::post('/getsubcategory', [ProductController::class, 'getsubcategory'])->name('getsubcategory');
-
+  
 
 
 });
@@ -164,6 +164,11 @@ Route::get('website/edit', function(){
 
 Route::get('website/product', [WebsiteController::class, 'product'])->name('web.product');
 Route::get('website/category', [WebsiteController::class, 'category'])->name('web.category');
-Route::get('website/subcategory', [WebsiteController::class, 'subcategory'])->name('subcategory');
+Route::get('website/subcategory', [WebsiteController::class, 'subcategory'])->name('web.subcategory');
 Route::get('/getSubcategories/{categoryId}', 'WebsiteController@getSubcategories');
 Route::get('/product/{productId}', [WebsiteController::class, 'subcategory'])->name('productDetail');
+
+Route::get('website/cart', [WebsiteController::class, 'cart'])->name('cart');
+Route::get('website/add-to-cart/{id}', [WebsiteController::class, 'addToCart'] )->name('add-to-cart');
+Route::get('website/remove-from-cart/{id}',[CartController::class, 'removeFromCart'])->name('remove-from-cart');
+Route::get('website/product-detail/{id}', [WebsiteController::class, 'show'])->name('website.product_detail');

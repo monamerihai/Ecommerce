@@ -10,7 +10,7 @@ border-color: #f9bf29;">
 	<div class="container-fluid">
 	  <!-- Links -->
 	  <ul class="navbar-nav">
-	        @foreach ($category1 as $category)
+	        @foreach ($categorys as $category)
 
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">{{ $category->categoryname }}</a>
@@ -80,8 +80,7 @@ border-color: #f9bf29;">
           @foreach ($products as $row)
          
         <div class="col-12 col-md-4 col-lg-3 mb-5">
-		
-			<a class="product-item" href="{{ route('category.product.view', ['category' => $row->catslug, 'product' => $row->slug]) }}">
+			<a class="product-item" href="{{route('website.cart')}}">
                 <img src="{{ asset('image/' . explode(',', $row->img)[0]) }}" class="card-img-top" alt="Card Image" style="height: 170; width:150">
                 <h5 class="card-title">{{ $row->productname }}</h5>
                 <p class="card-text">Price: ₹{{ $row->price }}/-</p>

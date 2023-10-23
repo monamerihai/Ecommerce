@@ -12,12 +12,7 @@ class SiteController extends Controller
 public function cat(){ 
     $data['categorys'] = category1::get();
 
-    $data['products'] = DB::table('products')
-    ->join('category1s', 'products.categoryid', '=', 'category1s.id')
-    ->join('subcategories', 'products.subcategoryid', '=', 'subcategories.id')
-    ->select('products.*','category1s.slug as catslug', 'category1s.categoryname', 'subcategories.subcatname')
-    ->get();
-   
+
     // $data['subcategory'] = DB::table('subcategories')
     // ->join('category1s', 'subcategories.catid', '=', 'category1s.id')
     // ->select('subcategories.*', 'category1s.categoryname')
@@ -33,34 +28,20 @@ public function cat(){
 
             return view('website.index', $data);
 }
+public function getcat(Request $request)
+{
+    $cid = $request->cid;
+    $catdata = Db::table('subcategories')->where('catid', $cid)->get();
+    $htmi = '<option value="">Select subcategory</option>';
 
-public function productView($category1_slug)
-    {
-        $category1 = category1::where('slug', $category1_slug)->first();
-       
-dd($category1);
-        if ($category1) {
-            return view('website.index', compact('category'));
-        } else {
-            return redirect()->back();
-        }
+
+    foreach ($catdata as $row) {
+
+        $htmi .= "<option value={$row->id}>{$row->subcatname}</option>";
     }
-    public function productViews(string $category_slug, string $product_slug)
-    {
-        $category1 = category1::where('slug', $category_slug)->first();
+    echo $htmi;
 
-        if ($category1) {
 
-            $product = $category1->products()->where('slug', $product_slug)->where('status', '0')->first();
-            if ($product) {
-
-                return view('showproducts', compact('category', 'product'));
-            } else {
-                return redirect()->back();
-            }
-        } else {
-            return redirect()->back();
-        }
-    }
+}
 
 }

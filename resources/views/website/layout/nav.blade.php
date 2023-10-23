@@ -25,24 +25,30 @@
 				<li>
 					
 					<a class="nav-link" href="{{url('website/contact')}}">Contact us</a></li>
+
+					
 			</ul>
 			@endauth
 			
 					@auth
-					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+					<ul class="custom-navbar-cta navbar-nav mb-md-0 ms-5" >
 						<li>
-					<div class="dropdown " style="margin: inherit;" >
-						<a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+
+					<div class="dropdown " >
+						<a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false" style="margin-top: 10px;">
 							<img src="{{url('website/asset/dist/images/user.svg')}}">
 						</a>
+
 						<ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser1">
 						  <li><a style="color:black"class="dropdown-item" href="{{url('website/password')}}">change Password</a></li>
 						  <li><a style="color:black"class="dropdown-item" href="{{url('website/edit')}}">Edit Profile</a></li>
 						  <li><hr class="dropdown-divider"></li>
 						  <li><a style="color:black"class="dropdown-item" href="{{url('website/logout')}}">Log out</a></li>
 						</ul>
+
 					  </div>
-				</li>
+				     </li>
+
 				    <li><a class="nav-link" href="{{url('website/cart')}}">
 					<img src="{{url('website/asset/dist/images/cart.svg')}}"></a></li>
 					<li><a class="nav-link" href="{{url('website/logout')}}">Log out</a></li>
