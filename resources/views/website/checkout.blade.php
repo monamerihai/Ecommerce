@@ -19,13 +19,7 @@
 
 <div class="untree_co-section">
 <div class="container">
-  <div class="row mb-5">
-    <div class="col-md-12">
-      <div class="border p-4 rounded" role="alert">
-        Returning customer? <a href="#">Click here</a> to login
-      </div>
-    </div>
-  </div>
+
   <div class="row">
     <div class="col-md-6 mb-5 mb-md-0">
       <h2 class="h3 mb-3 text-black">Billing Details</h2>
@@ -125,7 +119,9 @@
                   <option value="6">Albania</option>    
                   <option value="7">Bahrain</option>    
                   <option value="8">Colombia</option>    
-                  <option value="9">Dominican Republic</option>    
+                  <option value="9">Dominican Republic</option> 
+                  <option value="10">India</option>    
+   
                 </select>
               </div>
 
@@ -222,25 +218,39 @@
                 <th>Total</th>
               </thead>
               <tbody>
-                <tr>
-                  <td>Top Up T-Shirt <strong class="mx-2">x</strong> 1</td>
-                  <td>$250.00</td>
+                <?php
+                $productName = "Product Name"; 
+$productPrice = $product->price*0.8;
+$gstPercentage = 18;
+$gstAmount = ($productPrice * $gstPercentage) / 100;
+$packingCharges = 89.00;
+$deliveryCharges = 49.00;
+$orderTotal = $productPrice + $packingCharges + $deliveryCharges + $gstAmount;
+                
+               echo' <tr>
+                  <td>'.$product->productname.'</td>
+                  <td>'.'₹' . number_format($productPrice, 0) . '</td>
                 </tr>
                 <tr>
-                  <td>Polo Shirt <strong class="mx-2">x</strong>   1</td>
-                  <td>$100.00</td>
+                  <td>Packing charges</td>
+                  <td>₹' . number_format($packingCharges, 0) . '</td>
                 </tr>
                 <tr>
-                  <td class="text-black font-weight-bold"><strong>Cart Subtotal</strong></td>
-                  <td class="text-black">$350.00</td>
+                  <td>Delivery charges</td>
+                  <td>₹' . number_format($deliveryCharges, 0) . '</td>
+                </tr>
+                <tr>
+                  <td class="text-black font-weight-bold"><strong> GST Charges</strong> </td>
+                  <td class="text-black">'.'₹'.  number_format($gstAmount, 0) .'</td>
                 </tr>
                 <tr>
                   <td class="text-black font-weight-bold"><strong>Order Total</strong></td>
-                  <td class="text-black font-weight-bold"><strong>$350.00</strong></td>
+                  <td class="text-black font-weight-bold"><strong>' .'₹'. number_format($orderTotal, 0) . '</strong></td>
                 </tr>
               </tbody>
-            </table>
-
+            </table>'
+            ?>
+            
             <div class="border p-3 mb-3">
               <h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse" href="#collapsebank" role="button" aria-expanded="false" aria-controls="collapsebank">Direct Bank Transfer</a></h3>
 

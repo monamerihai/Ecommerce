@@ -67,30 +67,16 @@ Route::group(['middleware' => 'Adminauth'], function () {
    Route::get('/productedit/{id}', [ProductController::class, 'productedit'])->name('productedit');
    Route::POST('/productupdate', [ProductController::class, 'productupdate'])->name('productupdate');
 
-
-  // Get  category/subcategory in dropdown
-
   Route::post('/getcategory', [ProductController::class, 'getcategory'])->name('getcategory');
   
 
 
 });
-//Site Controller
 Route::get('/website.index', [SiteController::class, 'cat'])->name('website.index');
 Route::post('/getcat', [SiteController::class, 'getcat'])->name('getcat');
-//Route::get('/website.index', [SiteController::class, 'sub'])->name('website.index');
-
-
-
-
-// Route::get('/shop', [WebsiteController::class, 'shop'])->name('website.shop');
-
-
 
 Route::get('webs', [WebsiteController::class, 'index'])->name('web.index');
-// Route::get('website/shop', function () {
-//   return view('website.shop');
-// })->name('website.shop');
+
 Route::get('website/shop', [WebsiteController::class, 'shop'])->name('web.shop');
 Route::get('website/index', [WebsiteController::class, 'index'])->name('website.index');
 Route::get('website/services', [WebsiteController::class, 'index'])->name('website.index');
@@ -110,9 +96,7 @@ Route::get('website/contact', function () {
 Route::get('website/cart', function () {
   return view('website.cart');
 })->name('website.cart');
-Route::get('website/checkout', function () {
-  return view('website.checkout');
-})->name('website.checkout');
+
 Route::get('website/thankyou', function () {
   return view('website.thankyou');
 })->name('website.thankyou');
@@ -145,27 +129,10 @@ Route::post('image-upload',[Customer::class,'imageUpload'])->name('image.store')
 Route::get('website/change/password',[Customer::class,'changePassword'])->name('change.password');
 Route::post('website/update/password',[Customer::class,'updatePassword'])->name('update.password');
 Route::get('website/logout', [Customer::class, 'logout'])->name('website.logout');
-Route::group(['middleware'=>'auth'], function(){
-Route::get('website/webs', function(){
-  return view('webs');
-    })->name('webs');
-
-  
-
-
-
-});
 Route::get('website/edit', function(){
   return view ('website.edit');
 })->name('website.edit');
 
-Route::get('website/product', [WebsiteController::class, 'product'])->name('web.product');
-Route::get('website/category', [WebsiteController::class, 'category'])->name('web.category');
-Route::get('website/subcategory', [WebsiteController::class, 'subcategory'])->name('web.subcategory');
-Route::get('/getSubcategories/{categoryId}', 'WebsiteController@getSubcategories');
-Route::get('/product/{productId}', [WebsiteController::class, 'subcategory'])->name('productDetail');
-
 Route::get('website/cart', [WebsiteController::class, 'cart'])->name('cart');
-Route::get('website/add-to-cart/{id}', [WebsiteController::class, 'addToCart'] )->name('add-to-cart');
-Route::get('website/remove-from-cart/{id}',[CartController::class, 'removeFromCart'])->name('remove-from-cart');
 Route::get('website/product-detail/{id}', [WebsiteController::class, 'show'])->name('website.product_detail');
+Route::get('website/checkout/{id}',[WebsiteController::class, 'checkout'])->name('website.checkout');

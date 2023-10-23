@@ -2,6 +2,7 @@
 @include('website.layout.nav')
 
 {{-- @section('content') --}}
+
 <br>
 <div class="container">
    @if ($errors->any())
@@ -79,6 +80,7 @@
       </div>
    </div>
 </div>
+<br>
   <br><br>
 @include('website.layout.footer')
 @include('website.layout.js')

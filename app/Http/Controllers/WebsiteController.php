@@ -38,5 +38,11 @@ public function show($id)
     
     return view('website.product_detail', ['product' => $product]);
 }
+public function checkout($id)
+{
+    $product = product::find($id);
+    
+    return view('website.checkout', ['product' => $product]);
+}
 }
     
