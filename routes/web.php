@@ -28,6 +28,8 @@ use App\Http\Controllers\CartController;
 //LoginController
 
 Route::get('/', [LoginController::class, 'index']);
+Route::get('/createnewuser', [LoginController::class, 'createnewuser'])->name('createnewuser');
+
 Route::post('/login_acn', [LoginController::class, 'login_acn']);
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::group(['middleware' => 'Adminauth'], function () {
